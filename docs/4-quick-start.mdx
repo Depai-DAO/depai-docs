@@ -1,0 +1,44 @@
+---
+sidebar_position: 4
+---
+
+# Quick Start
+
+## Linux and MacOS Installation Guide
+
+For optimal performance, it is recommended to use a device with a GPU and ensure that the GPU drivers are correctly installed.
+
+### Installation Steps
+
+1) Visit the official Depai website at https://depai.online and register an account using your email.
+2) Run the following command to install the client:
+
+Installation
+```bash
+curl -fsSL -o /tmp/install.sh https://depai.online/downloads/install.sh && source /tmp/install.sh
+```
+
+3) Login to Depai:
+```bash
+$ depai login
+```
+Enter your user name and password as prompted.
+
+4) Create a worker:
+```bash
+$ depai create
+```
+Enter your worker name and password as prompted.
+
+5) Initialize the worker:
+```bash
+$ depai init
+```
+
+6) Bring the worker online to start receiving tasks:
+```bash
+$ depai online
+```
+Select a model to start Depai
+
+**Note**: During the first startup, the system will download necessary files, which may take some time.

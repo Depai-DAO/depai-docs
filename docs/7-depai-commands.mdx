@@ -1,0 +1,151 @@
+---
+sidebar_position: 7
+---
+
+# Depai Commands
+
+## Login to the server
+
+Login to the server using your email and password to establish a session and access your account.
+```bash
+depai login
+```
+
+```bash
+$ depai login
+Enter Email: depai@depai.online
+Enter Password:
+```
+
+## Logout from the server
+
+End your current session. Re-login with your username and password to access your account again.
+```bash
+$ depai logout
+```
+
+## Create a worker
+
+Create a new worker based on local system information and configurations.
+
+The command supports both interactive and non-interactive modes for create the worker:
+
+Interactive mode:
+
+```bash
+$ depai create
+Please enter the worker name: my_worker
+Please enter the worker description[optional]:
+```
+
+Non-interactive mode:
+
+Use the `-n` flag to specify the worker name directly:
+```bash
+$ depai create -n [worker_name]
+```
+Replace `[worker_name]` with the desired name for your worker.
+
+
+## Update the worker information
+
+Update the worker information to make it easier for you to identify your worker.
+
+The command supports both interactive and non-interactive modes for update the worker:
+
+Interactive mode:
+
+```bash
+$ depai update
+Please enter worker name: my my_worker
+Please enter worker description[optional]:
+```
+
+Non-interactive mode:
+
+Use the `-n` flag to specify the worker name directly:
+```bash
+$ depai update -n [worker_name]
+```
+Replace `[worker_name]` with the desired name for your worker.
+
+## Initialize the worker
+
+Set up the worker by configuring necessary settings and preparing the environment for operation.
+```bash
+$ depai init
+```
+
+## Go online to receive AI tasks
+
+You must go online to receive AI tasks and earn Depai points.
+
+The command supports both interactive and non-interactive modes for specifying the model:
+
+Interactive mode:
+
+```bash
+$ depai online
+Use the arrow keys to navigate: ↓ ↑ → ←
+? Please choose a model for the online service:
+  ▶︎ gemma2:27b
+    llama3.1:8b
+```
+
+Non-interactive mode:
+
+Use the `-m` flag to specify the model directly:
+```bash
+$ depai online -m [modelName]
+```
+Example:
+```bash
+$ depai online -m llama3.1:8b
+```
+
+## Stop the worker
+
+Stop the worker will halt all task processing.
+```bash
+$ depai stop
+```
+
+## Show detail of worker information
+
+Display comprehensive worker details, including data from both the local machine and the server.
+```bash
+$ depai info
+```
+
+## Display the status of the worker
+
+Retrieve and display the current status of the worker.
+```bash
+$ depai status
+```
+## Upgrade Depai client to the latest version
+
+Upgrade the Depai client to the latest available version.
+```bash
+$ depai upgrade
+```
+
+## Uninstall Depai client
+
+Uninstall the Depai client, including all binaries and model files.
+```bash
+$ depai uninstall
+```
+
+## Display the Depai client version
+
+Displays the current version of the Depai client.
+```bash
+$ depai version
+```
+
+
+
+
+
+

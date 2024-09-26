@@ -1,0 +1,83 @@
+# Points Reward
+
+Points are designed into three categories. The first category is **u point**, which is the points earned by users for using Depai. The second category is **v point**, which is the points earned by validators for completing task scheduling. The third category is **w point**, which is the points earned by workers for completing inference tasks or for being effectively online.
+
+Depai will conduct **Alpha testing**, **Testnet**, and **Main Beta** launches seasonally, and increase the points by multiples every season. The multiples apply to **u point**, **v point**, and **w point** at the same time. To ensure the rights and interests of old users, the season multiples will be reduced every season, as shown in the following table:
+
+Table 2-1: Season multiple for u point, v point, and w point
+
+| No. | Season  | Season Multiple |
+|-----|---------|-----------------|
+| 1.  | Alpha   | 20              |
+| 2.  | 1       | 10              |
+| 3.  | 2       | 9               |
+| 4.  | 3       | 8               |
+| 5.  | 4       | 7               |
+| 6.  | 5       | 6               |
+| 7.  | 6       | 5               |
+| 8.  | 7       | 4               |
+| 9.  | 8       | 3               |
+| 10. | 9       | 2               |
+| 11. | 10      | 1               |
+
+## U Point
+
+Users can earn **u point** rewards by asking questions through the **Ask AI to Earn App**. For each question asked and answered, **u points** can be earned. The maximum number of times to earn **u points** within a 24-hour period is limited to 100. To ensure the validity of the questions, the system will evaluate the quality of the questions, with high-quality questions receiving more **u points**. The assessment of question quality will be completed by AI, and the quality will be divided into 10 levels from low to high.
+
+The **u points** that can be earned for each question = the number of tokens in the question * the quality level of the question * season multiple. **(Formula 2-1)**
+
+For example: A user asked one question during season 1:
+
+*"Please tell me a story."*
+
+The AI assessed the number of tokens as 6, the quality of the question as 5, and the season multiple for season 1 as 10. Therefore, the user earned **u points** = 6 * 5 * 10 = 300.
+
+In the future, we will open up various behaviors through which users can earn **u points**, including following Depai's **X**, joining Depai's **Discord**, being active on Depai's **X** or **Discord**, and inviting friends to use Depai, etc. We will also gradually launch a leaderboard system for **u points**.
+
+## V Point
+
+Validators can earn **v point** rewards through task scheduling. For each completed task scheduling, they receive 1 **v point**.
+
+For example, a validator who performed 10,023 task schedulings in a single day during season 1 (with a season multiple of 10) would earn **v points** = 10,023 * 10 = 100,230 for that day.
+
+In the future, we will open up various behaviors through which validators can earn **v points**, including task verification and data synchronization tasks. We will also gradually implement a leaderboard system for **v points**.
+
+## W Point
+
+Workers can earn **w point** rewards by completing AI inference tasks and maintaining effective online.
+
+### 1) Rewards for Completing AI Inference Tasks
+
+Workers can earn **w points** by completing AI inference tasks.
+
+The **w points** earned from a single inference task = the number of tokens completed in the task * season multiple **(Formula 2-2)**.
+
+For example, a worker who completed one inference task during season 2 (with a season multiple of 9) and generated 382 tokens for that task would earn **w points** = 382 * 9 = 3,438.
+
+Generally speaking, under similar conditions, the accuracy and effectiveness of AI inference are positively correlated with the size of the model; that is, the larger the model, the more precise and appropriate the content of the inference output will be. To encourage workers to run larger AI models, Depai has introduced the parameter **"model size multiple"**; when calculating the number of tokens, the original number of output tokens will be multiplied by the corresponding model size multiple. **Table 2-2** lists the current models and their corresponding size multiples; this list will be continuously updated and expanded based on community suggestions in the future.
+
+For example, worker A runs the **gemma2:27b** model and completes one inference task in season 2, which generates 291 tokens. Since the model size multiple for **gemma2:27b** is 3, the original output of 291 tokens will be multiplied by 3, resulting in 873 tokens after the incentive. Consequently, worker A can earn **w points** = 873 * 9 = 7,857 for this task.
+
+Table 2-2: Model size multiple for various models
+
+| No. | Model          | Model Size Multiple |
+|-----|----------------|---------------------|
+| 1.  | llama3.1:8b    | 1                   |
+| 2.  | gemma2:27b     | 3                   |
+
+### 2) Effective Online Rewards
+
+Additionally, workers can earn rewards for being effectively online. Depai will take a snapshot every one minute and reward workers for their effective online presence.
+
+The **w points** earned for each snapshot = (w_score / wscore_divisor_factor) * (snapshot interval seconds / interval_divisor_factor) * season multiple **(Formula 2-3)**.
+
+In the above formula, **wscore_divisor_factor** and **interval_divisor_factor** are the reconciliation factors of effective online rewards; currently, **wscore_divisor_factor** is set to 10 and **interval_divisor_factor** is set to 3, which can be adjusted in the future based on community suggestions.
+
+For example, a worker goes online at 10:10:55 AM on a certain day during season 3 (with a season multiple of 8) and goes offline at 10:13:58 AM. After going online, two inferences are performed. The first inference occurs at 10:11:31 AM, and the validator evaluates its **w_score** as 31. The second inference occurs at 10:12:22 AM, and the validator evaluates its **w_score** as 42. During this period, Depai takes 3 snapshots at 10:11:00 AM, 10:12:00 AM, and 10:13:00 AM, respectively. The online rewards the worker received from the 3 snapshots are as follows:
+- **10:11:00 AM**, No.1 Snapshot: 0 * (60/3) * 8 = 0; This worker is just online, no inference tasks have been performed yet, no **w_score** has been generated, and it is judged as ineffective online.
+- **10:12:00 AM**, No.2 Snapshot: (31/10) * (60/3) * 8 = 480; At the time of this snapshot, the **w_score** of this worker is 31.
+- **10:13:00 AM**, No.3 Snapshot: (42/10) * (60/3) * 8 = 640; At the time of this snapshot, the **w_score** of this worker is 42.
+
+The worker has accumulated 0 + 480 + 640 = 1,120 **w points** in the above 3 snapshots.
+
+In the future, we will open up a variety of behaviors through which workers can earn **w points**, including large model training tasks, data processing tasks, and model evaluation tasks. We will also gradually introduce a leaderboard system for **w points**.

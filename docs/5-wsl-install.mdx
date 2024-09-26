@@ -1,0 +1,140 @@
+---
+sidebar_position: 5
+---
+
+# WSL Installation
+
+This guide will help you install and configure WSL (Windows Subsystem for Linux) on Windows, allowing you to run Linux-based command-line tools and applications.
+
+## System Requirements
+
+1) **Operating System Version**:
+    - WSL 2 requires **Windows 10 version 1903 or higher** or **Windows 11**.
+    - Ensure that your Windows OS is updated to the latest version.
+
+2) **Hardware Requirements**:
+    - x64 systems: Support both WSL 1 and WSL 2.
+    - ARM64 systems: Only support WSL 1.
+
+3) **Virtualization Support**:
+    - Your computer must have virtualization enabled, which can usually be done in the BIOS/UEFI settings. Refer to your device manual for specific steps.
+
+---
+
+## Enabling WSL
+
+1) Open PowerShell as Administrator:
+    - Type `PowerShell` in the Windows search bar, right-click, and select **"Run as Administrator"**.
+
+2) Enter the following command to enable WSL:
+   ```powershell
+   dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+   ```
+
+3) Enable the Virtual Machine Platform (necessary for WSL 2):
+   ```powershell
+   dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+   ```
+
+4) Restart your computer to apply the changes.
+
+---
+
+## Installing WSL
+
+1) Open PowerShell as Administrator.
+
+2) Run the following command to install WSL and the latest version of the Linux kernel:
+   ```powershell
+   wsl --install
+   ```
+
+    - This will automatically install WSL 2 and a default Linux distribution (usually Ubuntu).
+
+3) To install a specific Linux distribution, list available distributions with:
+   ```powershell
+   wsl --list --online
+   ```
+
+    - To install a specific distribution (e.g., Ubuntu):
+      ```powershell
+      wsl --install -d Ubuntu
+      ```
+
+4) After installation, you'll be prompted to set a Linux username and password.
+
+---
+
+## Installing Linux Distributions
+
+You can also install other Linux distributions from the Microsoft Store. Follow these steps:
+
+1) Open Microsoft Store.
+
+2) Search for the Linux distribution you want to install (e.g., Ubuntu, Debian, Fedora).
+
+3) Click **"Get"** or **"Install"** and wait for the installation to complete.
+
+4) Once installed, launch the distribution and follow the prompts to set up your username and password.
+
+---
+
+## Setting WSL 2 as Default
+
+If you've enabled WSL 2, make sure it's set as the default version for better performance.
+
+1) Open PowerShell as Administrator.
+
+2) Run the following command to set WSL 2 as the default version:
+   ```powershell
+   wsl --set-default-version 2
+   ```
+
+3) If you've already installed a Linux distribution and want to convert it to WSL 2, use this command:
+   ```powershell
+   wsl --set-version <DistroName> 2
+   ```
+
+    - For example, to set Ubuntu to WSL 2:
+      ```powershell
+      wsl --set-version Ubuntu 2
+      ```
+
+4) Check the current distributions and WSL versions:
+   ```powershell
+   wsl --list --verbose
+   ```
+
+---
+
+## Troubleshooting
+
+### 1) **Virtualization Not Enabled**
+- If you receive an error indicating that virtualization is not enabled when installing WSL 2, check your BIOS settings and ensure that virtualization technology (Intel VT-x or AMD-V) is enabled.
+
+### 2) **WSL 2 Installation Fails**
+- Ensure your Windows version meets the WSL 2 requirements. Run `winver` to check if your Windows version is 1903 or higher.
+
+### 3) **Upgrading from WSL 1 to WSL 2**
+- If your current WSL version is 1 and you'd like to upgrade to WSL 2, run the following command:
+  ```powershell
+  wsl --set-version <DistroName> 2
+  ```
+
+### 4) **Network Issues**
+- If WSL can't connect to the internet, try disabling and re-enabling WSL:
+  ```powershell
+  wsl --shutdown
+  wsl
+  ```
+
+---
+
+## Reference Resources
+
+- [Microsoft Official WSL Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
+- [WSL GitHub Page](https://github.com/microsoft/WSL)
+
+---
+
+If you encounter issues during installation or usage, refer to the troubleshooting section above or consult the official Microsoft documentation.
