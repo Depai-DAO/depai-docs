@@ -8,13 +8,13 @@ To keep the client up to date, it's recommended to follow these steps for automa
 
 1) Download the auto upgrade script:
 ```bash
-$ curl -L -o depai_auto_upgrade.sh https://depai.online/cli/depai_auto_upgrade.sh && echo -e "\nDownloaded depai_auto_upgrade.sh"
-$ curl -L -o nohup_run_depai.sh https://depai.online/cli/nohup_run_depai.sh && echo -e "\nDownloaded nohup_run_depai.sh"
+curl -L -o depai_auto_upgrade.sh https://depai.online/cli/depai_auto_upgrade.sh && echo -e "\nDownloaded depai_auto_upgrade.sh"
+curl -L -o nohup_run_depai.sh https://depai.online/cli/nohup_run_depai.sh && echo -e "\nDownloaded nohup_run_depai.sh"
 ```
 
 2) Grant executable permissions to the files:
 ```bash
-$ chmod +x depai_auto_upgrade.sh nohup_run_depai.sh
+chmod +x depai_auto_upgrade.sh nohup_run_depai.sh
 ```
 
 3) Starting the auto upgrade script:
@@ -40,7 +40,7 @@ nohup ./depai_auto_upgrade.sh $MODEL_NAME > /dev/null 2>&1 &
 
 Command to start the script:
 ```bash
-$ ./nohup_run_depai.sh
+./nohup_run_depai.sh
 ```
 
 **Note**: During the upgrade process, the worker may go offline for a few minutes. This is normal.
