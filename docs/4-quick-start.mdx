@@ -4,21 +4,35 @@ sidebar_position: 4
 
 # Quick Start
 
-## Linux and MacOS Installation Guide
+## Installation Guide
 
-For optimal performance, it is recommended to use a device with a GPU and ensure that the GPU drivers are correctly installed.
+### Supported Operating Systems
+
+Linux, macOS and WSL
+
+### GPU Installation
+
+On Linux and WSL, it is necessary to have the [GPU devices listed by Depai](https://depai.online/docs/hardware) and to have the GPU drivers installed correctly.
 
 ### Installation Steps
 
 1) Visit the official Depai website at https://depai.online and register an account using your email.
 2) Run the following command to install the client:
 
-Installation
+Installation & Login
 ```bash
 curl -fsSL -o /tmp/install.sh https://depai.online/downloads/install.sh && source /tmp/install.sh login
 ```
+After the installation is complete, the terminal prompts the user to log in.
+
+Simply enter your username and password as instructed.
+
+If you exit at this step, you can execute the following command to continue logging in.
 
 3) Login to Depai:
+
+If you have already logged in successfully, you can skip this step.
+
 ```bash
 depai login
 ```
