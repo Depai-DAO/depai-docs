@@ -55,9 +55,11 @@ Workers can earn **w point** rewards by completing AI inference tasks and mainta
 Workers can earn **w points** for completing AI inference tasks, and the **w point** rewards are calculated according to the following formula.
 
 First, calculate the total number of input and output tokens (`in_out_tokens`) using the following formula:
+
 `in_out_tokens = (input_tokens / output_input_ratio_factor) + output_tokens`, where `output_input_ratio_factor` is the multiplier factor for output tokens compared to input tokens, currently set to 3 (Formula 2-2).
 
 Next, calculate the **w points** earned for a single inference task using the following formula:
+
 `Single inference task w points = in_out_tokens × wpoint_sharing_ratio × season multiple`,
 where `wpoint_sharing_ratio` is the **w point** sharing ratio, currently set to 0.7 (Formula 2-3).
 
